@@ -50,7 +50,6 @@ figure; imshow(reconstructed_video(:,:,3)); title('Reconstructed Video Frame 3')
 %%%%%%%%%%%%%%%%                     FUNCTIONS                    %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function rmse = RMSE
 
 function reconstructed_video = OMP_reconstruction(coded_snapshot, random_pattern, T, patch_size, omp_threshold)
     % OMP_reconstruction: OMP reconstruction of the coded snapshot
@@ -73,13 +72,13 @@ function reconstructed_video = OMP_reconstruction(coded_snapshot, random_pattern
 
     patch_count = zeros(size(random_pattern, 1), size(random_pattern, 2));
     
-    l= floor(patch_size/2);                                     %  
-    r = floor(patch_size/2) - 1 + mod(patch_size, 2);            % 
-    for i = w+1:size(coded_snapshot,1)-w
-        for j = w+1:size(coded_snapshot,2)-w
+    l= floor(patch_size/2);                                      % number of pixels on left of central pixel
+    r = floor(patch_size/2) - 1 + mod(patch_size, 2);            % number of pixels on right of central pixel
+    for i = l+1:size(coded_snapshot,1)-r
+        for j = l+1:size(coded_snapshot,2)-r
             % Extracting the patch
-            image_patch = coded_snapshot(i-w:i+w, j-w:j+w);
-            random_patch = random_pattern(i-w:i+w, j-w:j+w, :);
+            image_patch = coded_snapshot(i-l:i+r, j-l:j+r);
+            random_patch = random_pattern(i-l:i+r, j-l:j+r, :);
             
             % Computing y
             y = reshape(image_patch, patch_size^2, 1);                              % image vector (p^2 x1)
@@ -97,9 +96,9 @@ function reconstructed_video = OMP_reconstruction(coded_snapshot, random_pattern
             recovered_image_patch = reshape(recovered_frames, patch_size^2, T);      % f (p^2 x T)
             
             for t = 1:T
-                reconstructed_video(i-w:i+w, j-w:j+w, t) =reconstructed_video(i-w:i+w, j-w:j+w, t) + reshape(recovered_image_patch(:,t), patch_size, patch_size);
+                reconstructed_video(i-l:i+r, j-l:j+r, t) =reconstructed_video(i-l:i+r, j-l:j+r, t) + reshape(recovered_image_patch(:,t), patch_size, patch_size);
             end
-            patch_count(i-w:i+w, j-w:j+w) = patch_count(i-w:i+w, j-w:j+w) + 1;
+            patch_count(i-l:i+r, j-l:j+r) = patch_count(i-l:i+r, j-l:j+r) + 1;
         end
     end
     reconstructed_video = reconstructed_video ./ repmat(patch_count, [1,1,T]);
