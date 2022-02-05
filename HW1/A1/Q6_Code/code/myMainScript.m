@@ -4,17 +4,17 @@ clc;
 
 addpath(genpath('MMread'));                         % Add MMread to path since mmread is not an inbuilt function since Matlab R2014b
 
-% video_name = "cars";                              % Also uncomment line 16
-video_name = "flame";                               % Also uncommnet line 17
+video_name = "cars";                              % Also uncomment line 16
+% video_name = "flame";                               % Also uncommnet line 17
 
 %% Part a
 % Reading the cars.avi video file and converting to grapscale and extracting the first three frames
-% T = 3;                                            % time horizon 
-T = 5;                                              % Select the appropriate number of frames
+T = 3;                                            % time horizon 
+% T = 5;                                              % Select the appropriate number of frames
 % T = 7;
 
-% video = mmread('../videos/cars.avi',1:T);
-video = mmread('../videos/flame.avi', 1:T);
+video = mmread('../videos/cars.avi',1:T);
+% video = mmread('../videos/flame.avi', 1:T);
 
 video_frames_gray = read_gray_video(video, T, video_name);      % We have considered only the lower 120x240 pixels of the video
 % Displaying the first three frames
@@ -185,7 +185,7 @@ function reconstructed_video = OMP_reconstruction(coded_snapshot, random_pattern
 end
 
 
-function theta_opt = Orthogonal_matching_pursuit(A, y, threshold)
+function theta = Orthogonal_matching_pursuit(A, y, threshold)
     % Orthogonal_matching_pursuit: Orthogonal matching pursuit algorithm
     %
     % Inputs:
@@ -216,5 +216,4 @@ function theta_opt = Orthogonal_matching_pursuit(A, y, threshold)
         residual = y - A_T * theta(T);
         itr = itr + 1;
     end
-    theta_opt = theta;
 end
