@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\title{Assignment 1: CS 754, Advanced Image Processing}
+\author{\textbf{Question 1}}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{bm}
+
+
+\usepackage[margin=0.5in]{geometry}
+\begin{document}
+\maketitle
+
+\begin{itemize}
+    \item Let $\boldsymbol{\theta^{\star}}$ be the result of the following minimization problem (BP): $\textrm{min} \|\boldsymbol{\theta}\|_1$ such that $\|\boldsymbol{y}-\boldsymbol{\Phi \Psi \theta}\|_2 \leq \varepsilon$, where $\boldsymbol{y}$ is an $m$-element measurement vector, $\boldsymbol{\Phi}$ is a $m \times n$ measurement matrix ($m < n$), $\boldsymbol{\Psi}$ is a $n \times n$ orthonormal basis in which $n$-element signal $\boldsymbol{x}$ has a sparse representation of the form $\boldsymbol{x} = \boldsymbol{\Psi \theta}$. Notice that $\boldsymbol{y} = \boldsymbol{\Phi x} + \boldsymbol{\eta}$ and $\varepsilon$ is an upper bound on the magnitude of the noise vector $\boldsymbol{\eta}$.
+
+Theorem 3 we studied in class states the following: If $\boldsymbol{\Phi}$ obeys the restricted isometry property with isometry constant $\delta_{2s} < \sqrt{2}-1$, then we have $\|\boldsymbol{\theta} - \boldsymbol{\theta^{\star}}\|_2 \leq C_1 s^{-1/2}\|\boldsymbol{\theta}-\boldsymbol{\theta_s}\|_1 + C_2 \varepsilon$ where $C_1$ and $C_2$ are functions of only $\delta_{2s}$ and where $\forall i \in \mathcal{S}, \boldsymbol{\theta_s}_i = \theta_i; \forall i \notin \mathcal{S}, \boldsymbol{\theta_s}_i = 0$. Here $\mathcal{S}$ is a set containing the indices of the $s$ largest magnitude elements of $\boldsymbol{\theta}$. 
+
+A curious student asks the following questions: `(1) It appears that the upper bound on $\|\boldsymbol{\theta} - \boldsymbol{\theta^{\star}}\|_2$ is reduced as $s$ increases, which goes against the very premise of compressed sensing. How do we address this apparent discrepancy? (2) It also appears that the error bound is independent of $m$. How do you address this? (3) Now consider that I gave you another theorem (called Theorem 3A), which is the same as Theorem 3 except that it requires that $\delta_{2s} < 0.1$. Out of Theorem 3 and Theorem 3A, which is the more useful theorem? Why? (4) It appears that if I set $\varepsilon = 0$ in BP, I can always reduce the upper bound on the error even if the noise vector $\boldsymbol{\eta}$ has non-zero magnitude. Am I missing something? If so, what am I missing?'
+\end{itemize}
+\vspace*{0.5cm}\\
+\textbf{Answer:} \\
+\begin{enumerate}
+    \item The upper bound on $\| \boldsymbol{\theta} - \boldsymbol{\theta^{\star}} \|_2$ does not reduce as $s$ increases \\
+    Although, the term $s^{-1/2}  \|\boldsymbol{\theta}-\boldsymbol{\theta_s}\|_1$ decreases as the sparsity $s$ increases, we also have to consider the constants $C_1$ and $C_2$ which are increasing functions of $\delta_{2s}$. We also know that $\delta_{2s}$ is an increasing function of the sparsity ($s$) (This can be thought intuitively as with increasing s, the bounds on $ ||A \theta ||_2 $ should be larger in terms of $ ||\theta||_2 $). We know that the composition of two increasing functions is also increasing and hence we can conclude that the constants $C_1$ and $C_2$ are also increasing functions of $s$. Hence the two effects of decreasing $s^{-1/2}  \|\boldsymbol{\theta}-\boldsymbol{\theta_s}\|_1$ and the increase in $C_1$ and $C_2$ are counter-acting each other. Moreover, the problems that are under consideration are not equivalent. As, the sparsity increases we need more measurements of the same signal for the restricted isometry to be satisfied. Hence, as $s$ increases, we need more measurements of the same signal. Hence, the claim that the upper bound on $\|\boldsymbol{\theta} - \boldsymbol{\theta^{\star}}\|_2$ does not reduce as $s$ increases is not valid. \\
+
+    \item The error bound is not independent of $m$. For the exact reconstruction of a $s$-sparse signal, we need $m$ measurements of the same signal. which has the following constraint.  
+    \begin{gather*}
+        m > O (s log(\frac{n}{s}) )
+    \end{gather*} 
+    Without m satisfying the above constant, the matrix will not satisfy the RIP condition. Hence, the error bound is not independent of $m$. \\
+
+    \item The number of matrices which will satisfy the constraints of Theorem 3 are more than that satsfying the constraints of Theorem 3A. If we have a theorem which assures the same implication for more number of cases then it is more useful. Hence in this case Theorem 3 is more useful than Theorem 3A. \\ 
+    
+    \item The implications of Theorem 3 are based on the assumptions that $$ || y - \boldsymbol{\Phi \Psi \theta} ||_2 \leq \varepsilon $$  
+    where the $\varepsilon$ is choosen based on the noise level. Hence, if we set $\varepsilon = 0$ in BP even in the presence of a non-zero noise level, we may obtain some x, however the guarantees of Theorem 3 cannot be applied as the conditions asked by Theorem 3 are not satisfied. \\
+    
+\end{enumerate}
+\end{document}

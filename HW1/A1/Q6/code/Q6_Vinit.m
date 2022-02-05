@@ -2,53 +2,130 @@ clear;
 close all;
 clc;
 
-addpath(genpath('MMread'));             % Add MMread to path since mmread is not an inbuilt function since Matlab R2014b
-T = 3;                                  % time horizon 
+addpath(genpath('MMread'));                         % Add MMread to path since mmread is not an inbuilt function since Matlab R2014b
+
+% video_name = "cars";                              % Also uncomment line 16
+video_name = "flame";                               % Also uncommnet line 17
 
 %% Part a
-% Reading the cars.avi video, converting to grapscale and extracting the first three frames
+% Reading the cars.avi video file and converting to grapscale and extracting the first three frames
+% T = 3;                                            % time horizon 
+T = 5;                                              % Select the appropriate number of frames
+% T = 7;
 
-video = mmread('../videos/cars.avi',1:T);
-video_frames_gray = [];                 % Preallocating the video frames
+% video = mmread('../videos/cars.avi',1:T);
+video = mmread('../videos/flame.avi', 1:T);
 
-% Converting to grapscale
-for i = 1:T
-    video_frames_gray = cat(3,video_frames_gray,im2double(rgb2gray(video.frames(i).cdata)));
-end
-
+video_frames_gray = read_gray_video(video, T, video_name);      % We have considered only the lower 120x240 pixels of the video
 % Displaying the first three frames
-% figure; imshow(video_frames_gray(:,:,1)); title('Frame 1'); 
-% figure; imshow(video_frames_gray(:,:,2)); title('Frame 2'); 
-% figure; imshow(video_frames_gray(:,:,3)); title('Frame 3'); 
-
-video_frames_gray = video_frames_gray(end-120 : end, end-240:end, :);
+display_frames(video_frames_gray, T, 'Original Video Frame ');
+save_frames(video_name, T, video_frames_gray, 'orig_');
 
 %% Part b
-% Generate a random binary pattern of size HxWxT with elements from {0,1} and compute coded snapshot
-H = size(video_frames_gray, 1);                                          % Height of the video
-W = size(video_frames_gray, 2);                                          % Width of the video
-random_pattern = randi([0 1], H, W, T);                                  % Generate the radom binary pattern
-coded_snapshot = sum(random_pattern .* video_frames_gray, 3);            % Compute the coded snapshot
-noisy_snapshot = coded_snapshot + (0/255)*randn(size(coded_snapshot));   % Adding noise of standard deviation 2
+% Generate the coded snapshot
+[noisy_snapshot, random_pattern] = get_coded_snapshot(video_frames_gray, T);    % Get the noisy coded snapshot and the random pattern
 
 % Displaying the Coded Snapshot
-figure; imshow(noisy_snapshot); title('Noisy Coded Snapshot');
+figure; imagesc(noisy_snapshot); colormap('gray'); title('Noisy Coded Snapshot');
+imwrite(noisy_snapshot, "../results/"+video_name+"_"+"noisy_snapshot_"+num2str(T)+".png");
 
-
+%% Part e
 % Reconstructing the video from the coded snapshot
-reconstructed_video = OMP_reconstruction(noisy_snapshot, random_pattern, T, 8, 0.1);
+epsilon = 0.1;                                  % Threshold for the reconstruction error (Calaculation shown in report)
+reconstructed_video = OMP_reconstruction(noisy_snapshot, random_pattern, T, 8, epsilon);
 
 % Displaying the Reconstructed Video
-figure; imshow(reconstructed_video(:,:,1)); title('Reconstructed Video Frame 1');
-figure; imshow(reconstructed_video(:,:,2)); title('Reconstructed Video Frame 2');
-figure; imshow(reconstructed_video(:,:,3)); title('Reconstructed Video Frame 3');
+display_frames(reconstructed_video, T, 'Reconstructed Video Frame ');
+save_frames(video_name, T, reconstructed_video, 'recon_');
 
+% Calculating the RMSE between the reconstructed video and the original video
+RMSE_T_frames = RMSE(video_frames_gray, reconstructed_video)                   % RMSE for the first T frames
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%                     FUNCTIONS                    %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function video_frames_gray = read_gray_video(video, T, video_name)
+    % This function reads the video and converts it to grayscale
+    % Inputs:
+    %   video: Video structure obtained from mmread
+    %   T: Number of frames to be read
+    % Outputs:
+    %   video_frames_gray: Grayscale video frames
+    %
+
+    video_frames_gray = [];                              % Preallocating the video frames
+    % Converting to grayscale
+    for i = 1:T
+        video_frames_gray = cat(3,video_frames_gray,im2double(rgb2gray(video.frames(i).cdata)));
+    end
+    
+    if (video_name == 'cars')
+        video_frames_gray = video_frames_gray(end-120 : end, end-240:end, :);    
+    end
+end
+
+function display_frames(video_frames_gray, T, title_text)
+    % This function displays the first T frames of the video
+    % Inputs:
+    %   video_frames_gray: Grayscale video frames
+    %   T: Number of frames to be displayed
+    % Outputs:
+    %   None
+    %
+
+    for i = 1:T
+        figure; imagesc(video_frames_gray(:,:,i)); colormap('gray'); title(title_text, num2str(i));
+    end
+end
+
+function save_frames(video_name, T, video_frames_gray, title_text)
+    % This function saves the first T frames of the video
+    % Inputs:
+    %   video_name: Name of the video
+    %   T: Number of frames to be saved
+    %   video_frames_gray: Grayscale video frames
+    % Outputs:
+    %   None
+    %
+
+    for i = 1:T
+        imwrite(video_frames_gray(:,:,i), '../results/'+video_name+'_'+num2str(T)+'_'+title_text+num2str(i)+'.png');
+    end
+end
+
+function [noisy_snapshot, random_pattern] = get_coded_snapshot(video_frames_gray, T)
+    % This function generates the coded snapshot with noise added
+    % Inputs:
+    %   video_frames_gray: Grayscale video frames
+    %   T: Number of frames to be displayed
+    % Outputs:
+    %   noisy_snapshot: Coded snapshot with noise added
+    %
+
+    H = size(video_frames_gray, 1);                                          % Height of the video
+    W = size(video_frames_gray, 2);                                          % Width of the video
+    random_pattern = randi([0 1], H, W, T);                                  % Generate the radom binary pattern
+    coded_snapshot = sum(random_pattern .* video_frames_gray, 3);            % Compute the coded snapshot
+    noisy_snapshot = coded_snapshot + (2/255)*randn(size(coded_snapshot));   % Adding noise of standard deviation 2
+end
+
+
+
+function rmse = RMSE(A, B)
+    % Computes the RMSE (Relative Mean Squared Error) between two video sequence A and B
+    % 
+    % Inputs:
+    %  A: The first video sequence (original data)
+    %  B: The second video sequence (reconstructed data)
+    %
+    % Outputs:
+    %  rmse: The RMSE between the two video sequences
+    %
+    rmse = sum(sum(sum((A - B).^2))) / sum((sum(sum(A.^2))));
+end
 
 
 function reconstructed_video = OMP_reconstruction(coded_snapshot, random_pattern, T, patch_size, omp_threshold)
@@ -90,7 +167,10 @@ function reconstructed_video = OMP_reconstruction(coded_snapshot, random_pattern
                 A_t = phi_t * psi;                                                  % A_t (p^2 x p^2)
                 A = cat(2, A, A_t);                                                 % A (p^2 x p^2 T)
             end
+           
+           
             % Now we have to estimate theta (p^2 T x 1) from A (p^2 T x p^2) and y (p^2 x 1)
+
             theta = Orthogonal_matching_pursuit(A, y, omp_threshold);                % theta (p^2 T x 1)
             recovered_frames = kron(eye(T), psi) * theta;                            % f (p^2 Tx 1)
             recovered_image_patch = reshape(recovered_frames, patch_size^2, T);      % f (p^2 x T)

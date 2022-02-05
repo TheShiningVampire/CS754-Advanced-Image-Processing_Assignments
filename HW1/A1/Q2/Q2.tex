@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\title{Assignment 1: CS 754, Advanced Image Processing}
+\author{\textbf{Question 2}}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{bm}
+
+
+\usepackage[margin=0.5in]{geometry}
+\begin{document}
+\maketitle
+
+\begin{itemize}
+    \item We will prove why the value of the coherence between $m \times n$ measurement matrix $\boldsymbol{\Phi}$ (with all rows normalized to unit magnitude) and $n \times n$ orthonormal representation matrix $\boldsymbol{\Psi}$ must lie within the range $[1,\sqrt{n}]$ (both 1 and $\sqrt{n}$ inclusive).
+Recall that the coherence is given by the formula \\
+$\mu(\boldsymbol{\Phi},\boldsymbol{\Psi}) = \sqrt{n} \max_{\substack{i \in \{0,1,...,m-1\}  \\ j \in \{0,1,...,n-1\} }} \left|\boldsymbol{\Phi}^i \boldsymbol{\Psi}_j \right|$. 
+Proving the upper bound should be very easy for you. To prove the lower bound, proceed as follows. Consider a unit vector $\boldsymbol{g} \in \mathbb{R}^n$. We know that it can be expressed as $\boldsymbol{g} = \sum_{k=1}^n \alpha_k^i \boldsymbol{\Psi_k}$ as $\boldsymbol{\Psi}$ is an orthonormal \emph{basis}. Now prove that $\mu(\boldsymbol{g},\boldsymbol{\Psi}) = \sqrt{n} \textrm{max}_{i \in \{0,1,...,n-1\}} \dfrac{|\alpha_i|}{\sum_{j=1}^n \alpha^2_j}$. Exploiting the fact that $\boldsymbol{g}$ is a unit vector, prove that the minimal value of coherence is attained when $\boldsymbol{g} = \sqrt{1/n} \sum_{k=1}^n \boldsymbol{\Psi_k}$ and that hence the minimal value of coherence is 1. \textsf{[10 points]}
+\end{itemize}
+\vspace*{0.5cm}\\
+\textbf{Answer:} \\
+First we prove the upper bound. For this first consider two vector $v_i, v_j \in \mathbb{R}^{n \times 1}$ such that both the vectors have a unit norm (in 2-norm), i.e. $ ||v_i||_2 =1$ and $ ||v_j||_2 =1$. Now, we know that for any such two vectors a function given by the following equation is a valid inner product.
+$$ f(v_i, v_j) = v_i^Tv_j = \langle v_i, v_j \rangle $$
+Hence, using Cauchy-Schwarz inequality, we know that the upper bound on the innner product between any such two vectors is given by,
+$$ | \langle v_i, v_j \rangle | \leq | \sqrt{ \langle v_i, v_i \rangle  \langle v_j, v_j \rangle}|$$
+Now, since we know that \\
+$$ \langle v_i, v_i \rangle = || v_i ||_2^2 = 1 $$
+and \\
+$$ \langle v_j, v_j \rangle = || v_j ||_2^2 = 1 $$
+we can show that the upper bound on the inner product is \\
+\begin{gather}
+ | \langle v_i, v_j \rangle | \leq |\sqrt{1} | = 1 
+\end{gather}
+\\
+
+\noindent Now, we know that the rows of the measurement matrix ($\boldsymbol{\Phi}^i \in \mathbb{R}^{1 \times n}$ ) are unit normalized i.e  
+\begin{gather}
+||\boldsymbol{\Phi}^i ||_2 = 1 \quad \quad \forall i \in \{0,1,\dots,m-1\} 
+\end{gather}
+Also the matrix $\boldsymbol{\Psi}$ is orthonormal, i.e. its column vectors ($\boldsymbol{\Psi} \in \mathbb{R}^{n \times 1}$ are mutually orthogonal and unit normalized, i.e. 
+\begin{gather}
+    ||\boldsymbol{\psi}_j ||_2 = 1 \quad \quad \forall j \in \{0,1,\dots,n-1\} 
+\end{gather}
+
+Since, $\boldsymbol{\Phi}^i$ is a row  vector and $\boldsymbol{\Psi}_j$ is a column vector, we can apply Cauchy-Schwarz inequality on them considering $ \boldsymbol{\Phi}^i \boldsymbol{\Psi}_j $ as the inner product. Hence, using Cauchy-Schwarz on the row-vector of the measurement matrix and the columns of the matrix $\boldsymbol{\Psi}$, we know that the upper bound on the inner product between any two vectors is given by,
+\begin{gather*}
+| \boldsymbol{\Phi}^i, \boldsymbol{\Psi}_j | \leq 1 \quad \quad \forall i \in \{0,1,\dots,m-1\} \quad \quad \forall j \in \{0,1,\dots,n-1\} \\
+\implies \sqrt{n} \max_{\substack{i \in \{0,1,...,m-1\}  \\ j \in \{0,1,...,n-1\} }} | \boldsymbol{\Phi}^i \boldsymbol{\Psi}_j | \leq \sqrt{n} \quad \dots \quad\text{ (Using (1), (2) and (3))} 
+\end{gather*}
+\begin{gather}
+\implies \mu(\boldsymbol{\Phi},\boldsymbol{\Psi}) \leq \sqrt{n} 
+\end{gather}
+
+
+Now, let us prove the lower bound of the given inequality. \\
+As $\boldsymbol{\Psi}$ is an orthonormal basis we can represent the $i^{th}$ row  of the measurement matrix as,
+\begin{gather*}
+(\boldsymbol{\Phi}^i)^T = \sum_{k=1}^n \alpha_k^i \boldsymbol{\Psi}_k \quad \quad \forall i \in \{0,1,\dots,m-1\}
+\end{gather*}
+The transpose is taken as $\boldsymbol{\Phi}^i$ is a row vector and $\boldsymbol{\Psi}_k$ is a column vector. Hence, we can write the above equation as,
+\begin{gather*}
+\boldsymbol{\Phi}^i = \sum_{k=1}^n \alpha_k^i \boldsymbol{\Psi}_k^T 
+\end{gather*}
+Also, since $\boldsymbol{\Phi}^i$ is unit normalized, we know that,
+\begin{gather}
+    \sum_{k = 1}^n (\alpha_k^i)^2 = 1
+\end{gather}
+Hence, we can write the coherence between $\boldsymbol{\Phi}^i$ and $\boldsymbol{\Psi}_k$ as,
+\begin{gather*}
+    \begin{align*}
+    \mu(\boldsymbol{\Phi},\boldsymbol{\Psi}) &=  \sqrt{n} \max_{\substack{i \in \{0,1,...,m-1\}  \\ j \in \{0,1,...,n-1\} }} \left|\boldsymbol{\Phi}^i \boldsymbol{\Psi}_j \right| \\
+    &= \sqrt{n} \max_{\substack{i \in \{0,1,...,m-1\}  \\ j \in \{0,1,...,n-1\} }} \left|(\sum_{k=1}^n \alpha_k^i \boldsymbol{\Psi}_k^T) \boldsymbol{\Psi}_j \right|\\
+    &= \sqrt{n} \max_{\substack{i \in \{0,1,...,m-1\}  \\ j \in \{0,1,...,n-1\} }} \left|\alpha_j^i \right|\\
+    \end{align*}
+\end{gather*}
+
+Now, since we want to find the lower bound on $\mu (\boldsymbol{\Phi}^i \boldsymbol{\Psi}_j)$ and from equation (5) we know the constraints that each column of the measurement matrix should follow, we can claim that the coherence will be minimized when all the coefficients $ \alpha_j^i $ of the $i^{th}$ row of the measurement matrix are equal. \\
+
+Hence, the coefficients of that $i^{th}$ row of the measurement matrix are given by,
+\begin{gather*}
+    \alpha_j^i = \pm \frac{1}{\sqrt{n}} \quad \quad \forall j \in \{0,1,\dots,n-1\}
+\end{gather*}
+The minimized value of the coherence in this case can be given by,
+\begin{gather*}
+    \mu_{min}(\boldsymbol{\Phi},\boldsymbol{\Psi}) = \sqrt{n} \left | \pm \frac{1}{\sqrt{n}} \right | 
+\end{gather*}
+\begin{gather}
+\implies \mu_{min}(\boldsymbol{\Phi},\boldsymbol{\Psi}) = 1
+\end{gather}
+Hence, using equation (5) and (6) we can write,
+\begin{gather*}
+   1 \leq \mu(\boldsymbol{\Phi},\boldsymbol{\Psi}) \leq \sqrt{n}
+\end{gather*}
+\\
+Hence proved
+\end{document}
