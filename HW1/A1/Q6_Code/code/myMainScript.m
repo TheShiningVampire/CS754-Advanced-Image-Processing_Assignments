@@ -206,10 +206,13 @@ function theta = Orthogonal_matching_pursuit(A, y, threshold)
 
     % Support set
     T = [];
+
+    % Normalize the columns of A
+    A_n = A ./ repmat(sqrt(sum(A.^2)), size(A,1), 1);
     
     % Iterating until the error is less than the threshold
     while (norm(residual) > threshold && itr < 64)
-        [~, index] = max(abs(residual' * normc(A)));          
+        [~, index] = max(abs(residual' * A_n));          
         T = [T index];
         A_T = A(:, T);
         theta(T) = pinv(A_T) * y;
