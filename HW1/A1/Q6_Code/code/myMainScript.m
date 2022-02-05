@@ -77,7 +77,7 @@ function display_frames(video_frames_gray, T, title_text)
     %
 
     for i = 1:T
-        figure; imagesc(video_frames_gray(:,:,i)); colormap('gray'); title(title_text, num2str(i));
+        figure; imagesc(video_frames_gray(:,:,i)); colormap('gray'); title(title_text + num2str(i));
     end
 end
 
