@@ -4,13 +4,13 @@ clc;
 
 addpath(genpath('MMread'));                         % Add MMread to path since mmread is not an inbuilt function since Matlab R2014b
 
-video_name = "cars";                              % Also uncomment line 16
-% video_name = "flame";                               % Also uncommnet line 17
+video_name = "cars";                                % Also uncomment line 16
+% video_name = "flame";                             % Also uncommnet line 17
 
 %% Part a
 % Reading the cars.avi video file and converting to grapscale and extracting the first three frames
 T = 3;                                            % time horizon 
-% T = 5;                                              % Select the appropriate number of frames
+% T = 5;                                          % Select the appropriate number of frames
 % T = 7;
 
 video = mmread('../videos/cars.avi',1:T);
