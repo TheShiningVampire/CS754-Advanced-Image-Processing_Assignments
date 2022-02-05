@@ -77,7 +77,7 @@ function display_frames(video_frames_gray, T, title_text)
     %
 
     for i = 1:T
-        figure; imagesc(video_frames_gray(:,:,i)); colormap('gray'); title(title_text + num2str(i));
+        figure; imagesc(video_frames_gray(:,:,i)); colormap('gray'); title([title_text, num2str(i)]);
     end
 end
 
@@ -208,7 +208,10 @@ function theta = Orthogonal_matching_pursuit(A, y, threshold)
     T = [];
 
     % Normalize the columns of A
-    A_n = A ./ repmat(sqrt(sum(A.^2)), size(A,1), 1);
+    A_n = A;                                        % initialize A_n
+    for i = 1:size(A,2)
+        A_n(:,i) = A_n(:,i) / norm(A_n(:,i));       % Normalize the columns of A
+    end
     
     % Iterating until the error is less than the threshold
     while (norm(residual) > threshold && itr < 64)
