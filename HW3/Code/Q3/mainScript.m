@@ -16,73 +16,73 @@ slice_51 = padarray(slice_51, [floor((size(slice_51, 2) - size(slice_51, 1))/2) 
 
 % Display the images
 figure; imshow(slice_50); title('Slice 50'); colormap(gray);
-% figure; imshow(slice_51); title('Slice 51'); colormap(gray);
+figure; imshow(slice_51); title('Slice 51'); colormap(gray);
 
-% % Creating measurements
-% % For parts a & b of this assignment we will use equispaced angles to find the radon transform
+% Creating measurements
+% For parts a & b of this assignment we will use equispaced angles to find the radon transform
 n_angles = 18;                              % Number of projection angles     
-% angles = linspace(0, 179, n_angles);        % 18 equispaced angles between 0 and 179 degrees
+angles = linspace(0, 179, n_angles);        % 18 equispaced angles between 0 and 179 degrees
 
-% radon_50 = radon(slice_50, angles);         % Radon transform of slice 50
-% radon_51 = radon(slice_51, angles);         % Radon transform of slice 51
+radon_50 = radon(slice_50, angles);         % Radon transform of slice 50
+radon_51 = radon(slice_51, angles);         % Radon transform of slice 51
 
-% %% Part a
-% % Filtered backprojection using Ram-Lak filter
-% recon_50 = iradon(radon_50, angles, 'Ram-Lak', 1, 'linear');
-% recon_51 = iradon(radon_51, angles, 'Ram-Lak', 1, 'linear');
+%% Part a
+% Filtered backprojection using Ram-Lak filter
+recon_50 = iradon(radon_50, angles, 'Ram-Lak', 1, 'linear');
+recon_51 = iradon(radon_51, angles, 'Ram-Lak', 1, 'linear');
 
-% recon_50 = recon_50/max(max(recon_50));     % Normalize the image
-% recon_51 = recon_51/max(max(recon_51));     % Normalize the image   
+recon_50 = recon_50/max(max(recon_50));     % Normalize the image
+recon_51 = recon_51/max(max(recon_51));     % Normalize the image   
 
-% % Display the reconstructed images
-% figure; imshow(recon_50); title('Reconstructed slice 50'); colormap(gray);
-% figure; imshow(recon_51); title('Reconstructed slice 51'); colormap(gray);
+% Display the reconstructed images
+figure; imshow(recon_50); title('Ram Lak Filter reconstruction (50)'); colormap(gray);
+figure; imshow(recon_51); title('Ram Lak Filter reconstruction (51)'); colormap(gray);
 
-% %% Part b
-% % Independent Compressed Sensing based reconstruction
+%% Part b
+% Independent Compressed Sensing based reconstruction
 
-% y_50 = radon_50(:);                          % Measurements of slice 50 in vector form
-% y_51 = radon_51(:);                          % Measurements of slice 51 in vector form
+y_50 = radon_50(:);                          % Measurements of slice 50 in vector form
+y_51 = radon_51(:);                          % Measurements of slice 51 in vector form
 
-% % Hyperparameters for l1_ls optimization
-% m = size(y_50, 1);                           % Number of measurements
-% n = size((slice_50(:)), 1);                  % Number of unknowns
-% lambda = 1;                                  % Regularization parameter
-% rel_tol = 1e-6;                              % Relative tolerance
-% quiet = false;                               % Display progress
+% Hyperparameters for l1_ls optimization
+m = size(y_50, 1);                           % Number of measurements
+n = size((slice_50(:)), 1);                  % Number of unknowns
+lambda = 1;                                  % Regularization parameter
+rel_tol = 1e-6;                              % Relative tolerance
+quiet = false;                               % Display progress
 
-% data_size = size(slice_50, 1);               % Size of the data
-% measurement_size = size(radon_50, 1);        % Size of the measurements
+data_size = size(slice_50, 1);               % Size of the data
+measurement_size = size(radon_50, 1);        % Size of the measurements
 
-% % Function handle for the objective function
-% A = forward_model_ind(angles,n_angles, 0, data_size, measurement_size);
-% A_t = forward_model_ind(angles,n_angles, 1, data_size, measurement_size);
+% Function handle for the objective function
+A = forward_model_ind(angles,n_angles, 0, data_size, measurement_size);
+A_t = forward_model_ind(angles,n_angles, 1, data_size, measurement_size);
 
-% % Performing the optimization
-% [theta_est_50, status_b_50] = l1_ls(A, A_t, m, n, y_50, lambda, rel_tol, quiet);
-% [theta_est_51, status_b_51] = l1_ls(A, A_t, m, n, y_51, lambda, rel_tol, quiet);
+% Performing the optimization
+[theta_est_50, status_b_50] = l1_ls(A, A_t, m, n, y_50, lambda, rel_tol, quiet);
+[theta_est_51, status_b_51] = l1_ls(A, A_t, m, n, y_51, lambda, rel_tol, quiet);
 
-% theta_est_50 = reshape(theta_est_50, [data_size, data_size]);
-% theta_est_51 = reshape(theta_est_51, [data_size, data_size]);
+theta_est_50 = reshape(theta_est_50, [data_size, data_size]);
+theta_est_51 = reshape(theta_est_51, [data_size, data_size]);
 
-% recon_cs_50 = idct2(theta_est_50);                  % Reconstructing the image using the estimated 
-%                                                     % DCT coefficients
-% recon_cs_51 = idct2(theta_est_51);                  % Reconstructing the image using the estimated 
-%                                                     % DCT coefficients
+recon_cs_50 = idct2(theta_est_50);                  % Reconstructing the image using the estimated 
+                                                    % DCT coefficients
+recon_cs_51 = idct2(theta_est_51);                  % Reconstructing the image using the estimated 
+                                                    % DCT coefficients
 
-% recon_cs_50 = recon_cs_50/max(max(recon_cs_50));    % Normalize the image
-% recon_cs_51 = recon_cs_51/max(max(recon_cs_51));    % Normalize the image
+recon_cs_50 = recon_cs_50/max(max(recon_cs_50));    % Normalize the image
+recon_cs_51 = recon_cs_51/max(max(recon_cs_51));    % Normalize the image
 
-% % Display the reconstructed images
-% figure; imshow(recon_cs_50); title('(CS based) Reconstructed slice 50'); colormap(gray);
+% Display the reconstructed images
+figure; imshow(recon_cs_50); title('(CS based) Reconstructed slice 50'); colormap(gray);
 
 
 %% Part c
 % Coupled Compressed Sensing based reconstruction
 % Note: For this part we will use 18 random angles in [0, pi) to find the radon transform
 
-angles_50 = 179*rand(n_angles, 1);       % 18 random angles between 0 and 179 degrees
-angles_51 = 179*rand(n_angles, 1);       % 18 random angles between 0 and 179 degrees
+angles_50 = 179*rand(n_angles, 1);       % random angles between 0 and 179 degrees
+angles_51 = 179*rand(n_angles, 1);       % random angles between 0 and 179 degrees
 
 % Creating the measurements
 radon_50 = radon(slice_50, angles_50);   % Radon transform of slice 50
