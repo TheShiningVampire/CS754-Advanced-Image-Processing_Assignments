@@ -2,6 +2,7 @@ clear;
 close all;
 clc;
 
+% tic;
 % Reading the image
 img = double(imread('barbara256.png'));
 figure; imagesc(img); colormap(gray); title('Original Image');
@@ -20,10 +21,13 @@ reconstructed_image = reconstruct_img(noisy_img, patch_size);
 figure; imagesc(reconstructed_image); colormap(gray); title('Reconstructed Image');
 
 % Displaying the RMSE between the original and reconstructed image
-RMSE = norm(img(:) - reconstructed_image(:))/norm(img(:));
-fprintf('RMSE = %f\n', RMSE);
+rmse_ISTA = norm(img(:) - reconstructed_image(:))/norm(img(:));
+rmse_noisy_img = norm(img(:) - noisy_img(:))/norm(img(:));
 
+disp(['RMSE of the noisy image is ', num2str(rmse_noisy_img)]);
+disp(['RMSE of the reconstructed image is ', num2str(rmse_ISTA)]);
 
+% toc;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%              FUNCTIONS          %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,7 +47,7 @@ function reconstructed_image = reconstruct_img(img, patch_size)
     % Initializing the output variables
     reconstructed_image = zeros(M, N);
     img_counts = zeros(M, N);
-    
+
     % Generate the random projection matrix
     phi_ = randn(32, patch_size^2);
 
@@ -52,7 +56,7 @@ function reconstructed_image = reconstruct_img(img, patch_size)
         for j = floor(patch_size/2)+1:N-floor(patch_size/2)+1
             patch = img(i-floor(patch_size/2):i+floor(patch_size/2) - 1, j-floor(patch_size/2):j+floor(patch_size/2) - 1);
             vect_patch = patch(:);
-            
+
             % Compute the compressive measurements
             y = phi_*vect_patch;
 
@@ -64,7 +68,7 @@ function reconstructed_image = reconstruct_img(img, patch_size)
             A = phi_ * DCT_basis_2D;
 
             theta_estimate = zeros(patch_size^2, 1);    % Initialize the estimate
-            lambda = 1;                                % Initialize the lambda
+            lambda = 1;                                 % Initialize the lambda
             num_iter = 500;
             theta_estimate = ISTA(A, y, lambda, theta_estimate, num_iter); 
             

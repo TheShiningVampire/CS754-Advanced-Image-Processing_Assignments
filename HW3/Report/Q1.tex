@@ -36,15 +36,38 @@ Piyush Bharambe (18D070019)
         \centering
         \begin{minipage}{.45\textwidth}
             \centering
-            \includegraphics[width=\linewidth]{results/cars_3_orig_1.png}
-            \caption*{Frame 1}
+            \includegraphics[width=\linewidth]{Images/Q1_Original.png}
+            \caption*{Original Barbara Image}
         \end{minipage}
-        \begin{minipage}{.45\textwidth}
+        \begin{minipage}{.55\textwidth}
             \centering
-            \includegraphics[width=\linewidth]{results/cars_3_orig_2.png}
-            \caption*{Frame 2}
+            \includegraphics[width=\linewidth]{Images/Q1_Noisy.png}
+            \caption*{Noisy Barbara Image}
         \end{minipage}
     \end{figure}
+    
+    \textbf{The RMSE between the original and the noisy image is $0.012663$}
+
+     Now, we will use the noisy image as the input image and the original image as the ground truth. Using the input image and using the prior information that the patches in the ground truth image have a sparse representation in the 2D-DCT basis, we will reconstruct the image using ISTA algorithm. \\ 
+     \textbf{Note:} In the ISTA algorithm, we have used $\lambda = 1$ and $\alpha = 1 + max(eigenvalue of A^TA)$ where $A$ is the measurement matrix. \\ 
+     The reconstructed image using ISTA algorithm is as shown below. \\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\linewidth]{Images/Q1_Part_a_result.png}
+        \caption*{Reconstructed Image using ISTA}
+    \end{figure}
+    \textbf{The RMSE between the original and the reconstructed image using ISTA algorithm is $0.012366$}
+
+
+    \item In this part, we consider 32 compressive measurements for each $8 \times 8$ patch. The entries of the measurement matrix are drawn iid from $\mathcal{N}(0,1)$. The ground truth image is the original Barbara image. We used ISTA algorithm on each overlapping patch and averaged the results. The reconstructed image is shown below. \\
+    \textbf{Note:} This program takes roughly 124 seconds to run. \\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\linewidth]{Images/Q1_Part_b_result.png}
+        \caption*{Reconstructed Image using ISTA on compressive measurements}
+    \end{figure}
+    \textbf{The RMSE between the original and the reconstructed image using ISTA algorithm on compressive measurements is $0.42538 $}
+
 \end{enumerate}
 \end{itemize}
 \end{document}

@@ -75,7 +75,7 @@ recon_cs_51 = recon_cs_51/max(max(recon_cs_51));    % Normalize the image
 
 % Display the reconstructed images
 figure; imshow(recon_cs_50); title('(CS based) Reconstructed slice 50'); colormap(gray);
-
+figure; imshow(recon_cs_51); title('(CS based) Reconstructed slice 51'); colormap(gray);
 
 %% Part c
 % Coupled Compressed Sensing based reconstruction

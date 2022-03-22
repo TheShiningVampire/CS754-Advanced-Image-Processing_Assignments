@@ -18,6 +18,14 @@ reconstructed_image = reconstruct_img(noisy_img, 8);
 % Displaying the reconstructed image
 figure; imagesc(reconstructed_image); colormap(gray); title('Reconstructed Image');
 
+% Calculating the RMSE
+rmse_ISTA = norm(img(:) - reconstructed_image(:))/norm(img(:));
+
+rmse_noisy_img = norm(img(:) - noisy_img(:))/norm(img(:));
+
+disp(['RMSE of the noisy image is ', num2str(rmse_noisy_img)]);
+
+disp(['RMSE of the reconstructed image is ', num2str(rmse_ISTA)]);
 
 
 
@@ -40,8 +48,8 @@ function reconstructed_image = reconstruct_img(img, patch_size)
     reconstructed_image = zeros(M, N);
     img_counts = zeros(M, N);
 
-    for i = floor(patch_size/2)+1:M-floor(patch_size/2)-1
-        for j = floor(patch_size/2)+1:N-floor(patch_size/2)-1
+    for i = floor(patch_size/2)+1:M-floor(patch_size/2)+1
+        for j = floor(patch_size/2)+1:N-floor(patch_size/2)+1
             patch = img(i-floor(patch_size/2):i+floor(patch_size/2) - 1, j-floor(patch_size/2):j+floor(patch_size/2) - 1);
             vect_patch = patch(:);
         
