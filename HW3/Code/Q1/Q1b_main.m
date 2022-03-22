@@ -13,11 +13,15 @@ figure; imagesc(noisy_img); colormap(gray); title('Noisy Image');
 % Now we reconstruct img from noisy_img using the prior information that img
 % patches have sparse representation in 2D DCT basis
 
-reconstructed_image = reconstruct_img(noisy_img, 8);
+patch_size = 8;                     % Patch size given in the question
+reconstructed_image = reconstruct_img(noisy_img, patch_size);
 
 % Displaying the reconstructed image
 figure; imagesc(reconstructed_image); colormap(gray); title('Reconstructed Image');
 
+% Displaying the RMSE between the original and reconstructed image
+RMSE = norm(img(:) - reconstructed_image(:))/norm(img(:));
+fprintf('RMSE = %f\n', RMSE);
 
 
 
@@ -39,28 +43,30 @@ function reconstructed_image = reconstruct_img(img, patch_size)
     % Initializing the output variables
     reconstructed_image = zeros(M, N);
     img_counts = zeros(M, N);
+    
+    % Generate the random projection matrix
+    phi_ = randn(32, patch_size^2);
 
-    for i = floor(patch_size/2)+1:M-floor(patch_size/2)-1
-        for j = floor(patch_size/2)+1:N-floor(patch_size/2)-1
+    for i = floor(patch_size/2)+1: M-floor(patch_size/2)+1
+        disp(i);
+        for j = floor(patch_size/2)+1:N-floor(patch_size/2)+1
             patch = img(i-floor(patch_size/2):i+floor(patch_size/2) - 1, j-floor(patch_size/2):j+floor(patch_size/2) - 1);
             vect_patch = patch(:);
-        
-            % Generate the measurement matrix
-            phi_ = eye(patch_size^2);           % Since the measurements are    
-                                                % just the noisy version of the 
-                                                % image 
+            
+            % Compute the compressive measurements
+            y = phi_*vect_patch;
 
             % 2D DCT basis matrix
-            DCT_basis = dctmtx(8);
+            DCT_basis = dctmtx(patch_size);
             DCT_basis_2D = kron(DCT_basis, DCT_basis);
 
             % Compute the A matrix
             A = phi_ * DCT_basis_2D;
 
-            theta_estimate = zeros(patch_size^2, 1);   % Initialize the estimate
+            theta_estimate = zeros(patch_size^2, 1);    % Initialize the estimate
             lambda = 1;                                % Initialize the lambda
-            num_iter = 200;
-            theta_estimate = ISTA(A, vect_patch, lambda, theta_estimate, num_iter); 
+            num_iter = 500;
+            theta_estimate = ISTA(A, y, lambda, theta_estimate, num_iter); 
             
             % Compute the estimated patch
             patch_estimate = DCT_basis_2D * theta_estimate;
