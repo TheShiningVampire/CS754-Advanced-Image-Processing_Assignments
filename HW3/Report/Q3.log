@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.1.26)  22 MAR 2022 20:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.1.26)  22 MAR 2022 23:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -320,6 +320,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 18.
 LaTeX Info: Redefining \pageref on input line 18.
 LaTeX Info: Redefining \nameref on input line 18.
+ (Q3.out) (Q3.out)
 \@outlinefile=\write3
 \openout3 = `Q3.out'.
 
@@ -464,275 +465,155 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has be
                    \relax 
 l.91 
       [2 <./Images/Q3_51.png (PNG copy)> <./Images/Q3_51_a.png (PNG copy)> <./Images/Q3_50_b.png (PNG copy)>]
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing } inserted.
-<inserted text> 
-                }
-l.95     \end{gather*}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Underfull \hbox (badness 10000) in paragraph at lines 95--98
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Extra \right.
-\rVert ->\delimiter 86422285 
-                             
-l.95     \end{gather*}
-                      
-I'm ignoring a \right that had no matching \left.
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Extra }, or forgotten $.
-<recently read> }
-                 
-l.95     \end{gather*}
-                      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing $ inserted.
-<inserted text> 
-                $
-l.95     \end{gather*}
-                      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing } inserted.
-<inserted text> 
-                }
-l.95     \end{gather*}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing $ inserted.
-<inserted text> 
-                $
-l.95     \end{gather*}
-                      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing \right. inserted.
-<inserted text> 
-                \right .
-l.95     \end{gather*}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.95     \end{gather*}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing } inserted.
-<inserted text> 
-                }
-l.95     \end{gather*}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+File: Images/Q3_50.png Graphic file (type png)
+<use Images/Q3_50.png>
+Package pdftex.def Info: Images/Q3_50.png  used on input line 109.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_50_c.png, id=34, 301.8778pt x 248.42813pt>
+File: Images/Q3_50_c.png Graphic file (type png)
+<use Images/Q3_50_c.png>
+Package pdftex.def Info: Images/Q3_50_c.png  used on input line 114.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+File: Images/Q3_51.png Graphic file (type png)
+<use Images/Q3_51.png>
+Package pdftex.def Info: Images/Q3_51.png  used on input line 122.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_51_c.png, id=35, 301.8778pt x 248.42813pt>
+File: Images/Q3_51_c.png Graphic file (type png)
+<use Images/Q3_51_c.png>
+Package pdftex.def Info: Images/Q3_51_c.png  used on input line 127.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-\@acolampacol ->\@acol \@addamp \@acol 
-                                       
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.130     \end{figure}
+                       [3 <./Images/Q3_51_b.png (PNG copy)>]
+Overfull \hbox (30.41426pt too wide) detected at line 136
+[]
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-\@classz ...acol \fi \edef \@preamble {\@preamble 
-                                                  \ifcase \@chnum \hfil $\re...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-\@classz ...\ifcase \@chnum \hfil $\relax \@sharp 
-                                                  $\hfil \or $\relax \@sharp...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 10000) in paragraph at lines 136--139
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+ []
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-<argument> ...nextchar \ifcase \@chclass \@classz 
-                                                  \or \@classi \or \@classii...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-\@mkpream ...hclass }\ifcase \@lastchclass \@acol 
-                                                  \or \or \@preamerr \@ne \o...
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.141         \item $
+                      \begin{pmatrix} \beta_1 \\ \Delta \beta_1 \\ \Delta \b... [4 <./Images/Q3_50_c.png (PNG copy)> <./Images/Q3_51_c.png (PNG copy)>]
+File: Images/Q3_50.png Graphic file (type png)
+<use Images/Q3_50.png>
+Package pdftex.def Info: Images/Q3_50.png  used on input line 156.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_Extra_50_a.png, id=48, 302.63063pt x 249.18094pt>
+File: Images/Q3_Extra_50_a.png Graphic file (type png)
+<use Images/Q3_Extra_50_a.png>
+Package pdftex.def Info: Images/Q3_Extra_50_a.png  used on input line 161.
+(pdftex.def)             Requested size: 243.90959pt x 200.83167pt.
+File: Images/Q3_51.png Graphic file (type png)
+<use Images/Q3_51.png>
+Package pdftex.def Info: Images/Q3_51.png  used on input line 169.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_Extra_51_a.png, id=49, 302.63063pt x 249.18094pt>
+File: Images/Q3_Extra_51_a.png Graphic file (type png)
+<use Images/Q3_Extra_51_a.png>
+Package pdftex.def Info: Images/Q3_Extra_51_a.png  used on input line 174.
+(pdftex.def)             Requested size: 243.90959pt x 200.83167pt.
+File: Images/Q3_50.png Graphic file (type png)
+<use Images/Q3_50.png>
+Package pdftex.def Info: Images/Q3_50.png  used on input line 184.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_Extra_50_b.png, id=50, 301.8778pt x 248.42813pt>
+File: Images/Q3_Extra_50_b.png Graphic file (type png)
+<use Images/Q3_Extra_50_b.png>
+Package pdftex.def Info: Images/Q3_Extra_50_b.png  used on input line 189.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Undefined control sequence.
-\@array ...e \@preamerr \z@ \@@par \fi \@preamble 
-                                                  
-l.95     \end{gather*}
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.192     \end{figure}
+                       [5 <./Images/Q3_Extra_50_a.png (PNG copy)> <./Images/Q3_Extra_51_a.png (PNG copy)>]
+File: Images/Q3_51.png Graphic file (type png)
+<use Images/Q3_51.png>
+Package pdftex.def Info: Images/Q3_51.png  used on input line 197.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_Extra_51_b.png, id=57, 301.8778pt x 248.42813pt>
+File: Images/Q3_Extra_51_b.png Graphic file (type png)
+<use Images/Q3_Extra_51_b.png>
+Package pdftex.def Info: Images/Q3_Extra_51_b.png  used on input line 202.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+File: Images/Q3_50.png Graphic file (type png)
+<use Images/Q3_50.png>
+Package pdftex.def Info: Images/Q3_50.png  used on input line 212.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_Extra_50_c.png, id=58, 301.8778pt x 248.42813pt>
+File: Images/Q3_Extra_50_c.png Graphic file (type png)
+<use Images/Q3_Extra_50_c.png>
+Package pdftex.def Info: Images/Q3_Extra_50_c.png  used on input line 217.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+File: Images/Q3_51.png Graphic file (type png)
+<use Images/Q3_51.png>
+Package pdftex.def Info: Images/Q3_51.png  used on input line 225.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
+<Images/Q3_Extra_51_c.png, id=59, 301.8778pt x 248.42813pt>
+File: Images/Q3_Extra_51_c.png Graphic file (type png)
+<use Images/Q3_Extra_51_c.png>
+Package pdftex.def Info: Images/Q3_Extra_51_c.png  used on input line 230.
+(pdftex.def)             Requested size: 243.90959pt x 200.72151pt.
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Missing $ inserted.
-<inserted text> 
-                $
-l.95     \end{gather*}
-                      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.233     \end{figure}
+                       [6 <./Images/Q3_Extra_50_b.png (PNG copy)> <./Images/Q3_Extra_51_b.png (PNG copy)>]
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.237 \end{document}
+                     [7 <./Images/Q3_Extra_50_c.png (PNG copy)> <./Images/Q3_Extra_51_c.png (PNG copy)>] (Q3.aux)
+Package rerunfilecheck Info: File `Q3.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 11857 strings out of 478659
+ 190183 string characters out of 2855777
+ 489650 words of memory out of 3000000
+ 29769 multiletter control sequences out of 15000+600000
+ 417422 words of font info for 79 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 67i,15n,77p,1760b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\Vinit\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Q3.pdf (7 pages, 799507 bytes).
+PDF statistics:
+ 125 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Misplaced alignment tab character &.
-\math@cr@@@ ->\ifst@rred \nonumber \fi &
-                                        \relax \make@display@tag \ifst@rred ...
-l.95     \end{gather*}
-                      
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Misplaced \cr.
-\math@cr@@@ ...fi \global \advance \row@ \@ne \cr 
-                                                  
-l.95     \end{gather*}
-                      
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-c:/Users/Vinit/My_things/ACADEMICS/Sem_8/CS754/CS754-Advanced-Image-Processing_Assignments/HW3/Report/Q3.tex:95: Misplaced \noalign.
-\math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
-                                                  {\vskip #1\relax }
-l.95     \end{gather*}
-                      
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-c:/Users/V
